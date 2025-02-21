@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Garcia - Windows Portfolio</title>
+    <link rel="icon" href="https://img.icons8.com/color/48/command-prompt.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Segoe+UI&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="desktop">
+        <div class="desktop-bg">
+            <div class="desktop-icon" onclick="openTerminal()" title="Terminal">
+                <img src="https://cdn-icons-png.flaticon.com/512/7560/7560719.png" alt="Terminal">
+                <span>Terminal</span>
+            </div>
+            <div class="desktop-icon" onclick="openPhotos()" title="Photos">
+                <img src="https://img.icons8.com/fluency/48/photos.png" alt="Photos">
+                <span>Photos</span>
+            </div>
+            <div class="desktop-icon" onclick="openNotepad()" title="Notepad">
+                <img src="https://img.icons8.com/color/48/notepad.png" alt="Notepad">
+                <span>Notepad</span>
+            </div>
+            <div class="desktop-icon" onclick="openCalculator()" title="Calculator">
+                <img src="https://img.icons8.com/color/48/calculator.png" alt="Calculator">
+                <span>Calculator</span>
+            </div>
+            <div class="desktop-icon" onclick="openPaint()" title="Paint">
+                <img src="https://img.icons8.com/color/48/paint.png" alt="Paint">
+                <span>Paint</span>
+            </div>
+            <div class="desktop-icon" onclick="openPong()" title="Pong">
+                <img src="https://img.icons8.com/color/48/ping-pong.png" alt="Pong">
+                <span>Pong</span>
+            </div>
+        </div>
+
+        <div class="window" id="terminal-window">
+            <div class="window-bar">
+                <span class="window-title">Command Prompt</span>
+                <div class="window-controls">
+                    <button class="minimize-btn">_</button>
+                    <button class="maximize-btn">□</button>
+                    <button class="close-btn" onclick="closeWindow('terminal-window')">X</button>
+                </div>
+            </div>
+            <div class="output" role="log" aria-live="polite"></div>
+            <div class="input-container">
+                <span class="prompt">> </span>
+                <input type="text" class="command-input" aria-label="Terminal command input" autofocus>
+            </div>
+        </div>
+
+        <div class="window" id="photos-window">
+            <div class="window-bar">
+                <span class="window-title">Photos</span>
+                <div class="window-controls">
+                    <button class="minimize-btn">_</button>
+                    <button class="maximize-btn">□</button>
+                    <button class="close-btn" onclick="closeWindow('photos-window')">X</button>
+                </div>
+            </div>
+            <div class="photos-content">
+                <img src="https://cdn.midjourney.com/d54f1087-8b00-435b-830d-0b7b27b4d9b5/0_0.png" alt="Mountain Lake">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Starry Sky">
+                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e" alt="Forest Path">
+            </div>
+        </div>
+
+        <div class="window" id="notepad-window">
+            <div class="window-bar">
+                <span class="window-title">Notepad</span>
+                <div class="window-controls">
+                    <button class="minimize-btn">_</button>
+                    <button class="maximize-btn">□</button>
+                    <button class="close-btn" onclick="closeWindow('notepad-window')">X</button>
+                </div>
+            </div>
+            <textarea class="notepad-content" placeholder="Type here..."></textarea>
+        </div>
+
+        <div class="window" id="calculator-window">
+            <div class="window-bar">
+                <span class="window-title">Calculator</span>
+                <div class="window-controls">
+                    <button class="minimize-btn">_</button>
+                    <button class="maximize-btn">□</button>
+                    <button class="close-btn" onclick="closeWindow('calculator-window')">X</button>
+                </div>
+            </div>
+            <div class="calculator-content">
+                <input type="text" id="calc-display" readonly>
+                <div class="calc-buttons">
+                    <button onclick="appendToCalc('7')">7</button>
+                    <button onclick="appendToCalc('8')">8</button>
+                    <button onclick="appendToCalc('9')">9</button>
+                    <button onclick="appendToCalc('/')">/</button>
+                    <button onclick="appendToCalc('4')">4</button>
+                    <button onclick="appendToCalc('5')">5</button>
+                    <button onclick="appendToCalc('6')">6</button>
+                    <button onclick="appendToCalc('*')">*</button>
+                    <button onclick="appendToCalc('1')">1</button>
+                    <button onclick="appendToCalc('2')">2</button>
+                    <button onclick="appendToCalc('3')">3</button>
+                    <button onclick="appendToCalc('-')">-</button>
+                    <button onclick="appendToCalc('0')">0</button>
+                    <button onclick="appendToCalc('.')">.</button>
+                    <button onclick="calculate()">=</button>
+                    <button onclick="appendToCalc('+')">+</button>
+                    <button onclick="clearCalc()">C</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="paint-window">
+            <div class="window-bar">
+                <span class="window-title">Paint</span>
+                <div class="window-controls">
+                    <button class="minimize-btn">_</button>
+                    <button class="maximize-btn">□</button>
+                    <button class="close-btn" onclick="closeWindow('paint-window')">X</button>
+                </div>
+            </div>
+            <canvas id="paint-canvas" class="paint-content"></canvas>
+        </div>
+
+        <div class="window" id="pong-window">
+            <div class="window-bar">
+                <span class="window-title">Pong</span>
+                <div class="window-controls">
+                    <button class="minimize-btn">_</button>
+                    <button class="maximize-btn">□</button>
+                    <button class="close-btn" onclick="closeWindow('pong-window')">X</button>
+                </div>
+            </div>
+            <canvas id="pong-canvas" class="pong-content"></canvas>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
